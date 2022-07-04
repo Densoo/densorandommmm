@@ -1,0 +1,218 @@
+--- Made By denso#0001
+--- Da Hood = Auto Ban
+
+ game.StarterGui:SetCore("SendNotification", {
+    Title = "denso da best 😱  ";
+    Text = "Loaded";
+
+})
+ game.StarterGui:SetCore("SendNotification", {
+    Title = "Get Good Niggas  ";
+    Text = "Ez";
+
+})
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("denso is gangsta", "Synapse")
+
+local RS = game:GetService("RunService")
+
+local denso = Window:NewTab("Main")
+local rs = denso:NewSection("Scripts")
+
+rs:NewToggle("Speed", "Press To Speed", function(state)
+    if state then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 80
+    else
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    end
+end)
+rs:NewButton("Fly (X)", "ButtonInfo", function()
+    	local L_143_ = game.Players.LocalPlayer
+	local L_144_ = L_143_:GetMouse()
+	localplayer = L_143_
+	if workspace:FindFirstChild("Core") then
+		workspace.Core:Destroy()
+	end
+	local L_145_ = Instance.new("Part")
+	L_145_.Name = "Core"
+	L_145_.Size = Vector3.new(0.05, 0.05, 0.05)
+	spawn(function()
+		L_145_.Parent = workspace
+		local L_152_ = Instance.new("Weld", L_145_)
+		L_152_.Part0 = L_145_
+		L_152_.Part1 = localplayer.Character.LowerTorso
+		L_152_.C0 = CFrame.new(0, 0, 0)
+	end)
+	workspace:WaitForChild("Core")
+	local L_146_ = workspace.Core
+	flying = true
+	local L_147_ = 25
+	local L_148_ = {
+		a = false,
+		d = false,
+		w = false,
+		s = false
+	}
+	local L_149_
+	local L_150_
+	local function L_151_func()
+		local L_153_ = Instance.new("BodyPosition", L_146_)
+		local L_154_ = Instance.new("BodyGyro", L_146_)
+		L_153_.Name = "EPIXPOS"
+		L_153_.maxForce = Vector3.new(math.huge, math.huge, math.huge)
+		L_153_.position = L_146_.Position
+		L_154_.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+		L_154_.cframe = L_146_.CFrame
+		repeat
+			wait()
+			localplayer.Character.Humanoid.PlatformStand = true
+			local L_155_ = L_154_.cframe - L_154_.cframe.p + L_153_.position
+			if not L_148_.w and not L_148_.s and not L_148_.a and not L_148_.d then
+				L_147_ = 25
+			end
+			if L_148_.w then
+				L_155_ = L_155_ + workspace.CurrentCamera.CoordinateFrame.lookVector * L_147_
+				L_147_ = L_147_ + 0
+			end
+			if L_148_.s then
+				L_155_ = L_155_ - workspace.CurrentCamera.CoordinateFrame.lookVector * L_147_
+				L_147_ = L_147_ + 0
+			end
+			if L_148_.d then
+				L_155_ = L_155_ * CFrame.new(L_147_, 0, 0)
+				L_147_ = L_147_ + 0
+			end
+			if L_148_.a then
+				L_155_ = L_155_ * CFrame.new(-L_147_, 0, 0)
+				L_147_ = L_147_ + 0
+			end
+			if L_147_ > 10 then
+				L_147_ = 25
+			end
+			L_153_.position = L_155_.p
+			if L_148_.w then
+				L_154_.cframe = workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad(L_147_ * 0), 0, 0)
+			elseif L_148_.s then
+				L_154_.cframe = workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(math.rad(L_147_ * 0), 0, 0)
+			else
+				L_154_.cframe = workspace.CurrentCamera.CoordinateFrame
+			end
+		until flying == false
+		if L_154_ then
+			L_154_:Destroy()
+		end
+		if L_153_ then
+			L_153_:Destroy()
+		end
+		flying = false
+		localplayer.Character.Humanoid.PlatformStand = false
+		L_147_ = 25
+	end
+	L_149_ = L_144_.KeyDown:connect(function(L_156_arg0)
+		if not L_146_ or not L_146_.Parent then
+			flying = false
+			L_149_:disconnect()
+			L_150_:disconnect()
+			return
+		end
+		if L_156_arg0 == "w" then
+			L_148_.w = true
+		elseif L_156_arg0 == "s" then
+			L_148_.s = true
+		elseif L_156_arg0 == "a" then
+			L_148_.a = true
+		elseif L_156_arg0 == "d" then
+			L_148_.d = true
+		elseif L_156_arg0 == "x" then
+			if flying == true then
+				flying = false
+			else
+				flying = true
+				L_151_func()
+			end
+		end
+	end)
+	L_150_ = L_144_.KeyUp:connect(function(L_157_arg0)
+		if L_157_arg0 == "w" then
+			L_148_.w = false
+		elseif L_157_arg0 == "s" then
+			L_148_.s = false
+		elseif L_157_arg0 == "a" then
+			L_148_.a = false
+		elseif L_157_arg0 == "d" then
+			L_148_.d = false
+		end
+	end)
+	L_151_func()
+end)
+rs:NewButton("Spinbot (C)", "Spinbot", function()
+    	local L_165_ = false
+	local L_166_ = game:GetService("UserInputService");
+	L_166_.InputBegan:Connect(function(L_167_arg0, L_168_arg1)
+		if (L_167_arg0.KeyCode == Enum.KeyCode.C and L_168_arg1 == false) then
+			if L_165_ == false then
+				L_165_ = true
+				wait()
+				getgenv().urspeed = 500
+				local L_169_ = game.Players.LocalPlayer.Character
+				while wait() do
+					L_169_.HumanoidRootPart.CFrame = L_169_.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(urspeed), 0)
+				end
+			else
+				L_165_ = false
+				getgenv().urspeed = 0
+			end
+		end
+	end);
+	game:GetService('RunService').Stepped:connect(function()
+		if L_165_ == true then
+		end
+	end)
+	game:GetService('RunService').Stepped:connect(function()
+		if L_165_ == false then
+			stopTracks();
+		end
+	end)
+end)
+
+rs:NewKeybind("Toggle UI", "KeybindInfo", Enum.KeyCode.V, function()
+	Library.ToggleUI()
+end)
+
+local denso = Window:NewTab("Client")
+local rs = denso:NewSection("Client Sided")
+
+rs:NewButton("Korblox", "Korblox (Client Sided)", function()
+    	local L_396_ = game.Players.LocalPlayer.Character
+	local L_397_ = game.Players.LocalPlayer.Character
+	local L_398_ = L_396_.Head
+	local L_399_ = L_398_.face
+	local L_400_ = L_397_.RightFoot
+	local L_401_ = L_397_.RightLowerLeg
+	local L_402_ = L_397_.RightUpperLeg
+	local L_403_ = L_397_.LeftFoot
+	local L_404_ = L_397_.LeftLowerLeg
+	local L_405_ = L_397_.LeftUpperLeg
+    
+    -- Right
+	L_400_.MeshId = "http://www.roblox.com/asset/?id=902942093"
+	L_401_.MeshId = "http://www.roblox.com/asset/?id=902942093"
+	L_402_.MeshId = "http://www.roblox.com/asset/?id=902942096"
+	L_402_.TextureID = "http://roblox.com/asset/?id=902843398"
+	L_400_.Transparency = 1
+	L_401_.Transparency = 1
+    
+end)
+rs:NewButton("Beast Mode", "Beast Mode (Client Sided)", function()
+    	local L_412_ = game.Players.LocalPlayer.Character
+	local L_413_ = L_412_:WaitForChild("Head")
+	local L_414_ = L_413_:WaitForChild("face")
+	L_414_.Texture = "rbxassetid://127959433"
+end)
+rs:NewButton("SSHF", "SSHF (Client Sided)", function()
+    	local L_409_ = game.Players.LocalPlayer.Character
+	local L_410_ = L_409_:WaitForChild("Head")
+	local L_411_ = L_410_:WaitForChild("face")
+	L_411_.Texture = "rbxassetid://494290547"
+end)
